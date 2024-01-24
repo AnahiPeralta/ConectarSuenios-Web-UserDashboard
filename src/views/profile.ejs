@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institución</title>
+    <link rel="stylesheet" href="/styles/profile.css">
+</head>
+<body>
+    <main class="main">
+        <div class="main-wrapper settings">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar">
+                        <div class="internal-menu">
+                            <ul class="menu">
+                                <li><div class="line"></div><a href="/perfil">Perfil</a></li>
+                                <li><div class="line"></div><a href="/edit-perfil">Editar Perfil</a></li>
+                                <li><div class="line-active"></div><a class="active" href="/profile">Candidaturas</a></li>
+                                <li><div class="line"></div><a href="/logout">Salir</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="title">
+                                    <h3>Candidaturas</h3>
+                                </div>
+                            </div>
+                            <div class="content">
+                                    <button class="add">+ Añadir Cantidato</button>
+                                    <div class="modal">
+                                        <div class="modal-content">
+                                            <form action="/profile" method="post">
+                                                <span class="close-button">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708"/>
+                                                    </svg>
+                                                </span>
+                                                <div class="data-alumno">
+                                                    <h3>Datos Personales del Alumno</h3>
+                                                    <div class="group-fields">
+                                                        <div class="fields-content">
+                                                            <div class="field">
+                                                                <label for="name">Nombre/s</label>
+                                                                <input type="text" name="name" id="name">    
+                                                            </div>
+                                                            <div class="field">
+                                                                <label for="lastname">Apellido/s</label>
+                                                                <input type="text" name="lastname" id="lastname">    
+                                                            </div>
+                                                        </div>
+                                                        <div class="fields-content">
+                                                            <div class="field">
+                                                                <label for="dni">DNI</label>
+                                                                <input type="text" name="dni" id="dni">    
+                                                            </div>
+                                                            <div class="field">
+                                                                <label for="birthdate">Fecha de nacimiento</label>
+                                                                <input type="date" name="birthdate" id="birthdate">    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="group-fields">
+                                                        <div class="fields-content">
+                                                            <div class="field">
+                                                                <label for="age">Edad</label>
+                                                                <input type="number" name="age" id="age">
+                                                            </div>
+                                                            <div class="field">
+                                                                <label for="pais">Nacionalidad</label>
+                                                                <input type="text" name="pais" id="pais">
+                                                            </div>
+                                                        </div>
+                                                        <div class="fields-content">
+                                                            <div class="field">
+                                                                <label for="provincia">Provincia de origen</label>
+                                                                <select name="provincia" id="provincia" onchange="showHideOtherProv()">
+                                                                    <option value="" disabled selected>Elige una opción</option>
+                                                                    <option value="Salta">Salta</option>
+                                                                    <option value="OtraProvincia">Otra provincia</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="field" id="other-prov" style="display: none;">
+                                                                <label for="provincia_alt">¿Cuál?</label>
+                                                                <input type="text" name="provincia_alt" id="provincia_alt">    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="group-fields">
+                                                        <div class="fields-content">
+                                                            <div class="field">
+                                                                <label for="departamento">Residencia</label>
+                                                                <select name="departamento" id="departamento">
+                                                                    <option value="" disabled selected>Elige una opción</option>
+                                                                    <option value="SanMartín">San Martín</option>
+                                                                    <option value="Rivadavia">Rivadavia</option>
+                                                                    <option value="Salta">Salta</option>
+                                                                    <option value="Oran">Oran</option>
+                                                                    <option value="LaViña">La Viña</option>
+                                                                    <option value="Metan">Metan</option>
+                                                                    <option value="LaCandelaria">La Candelaria</option>
+                                                                    <option value="Iruya">Iruya</option>
+                                                                    <option value="SantaVictoria">Santa Victoria</option>
+                                                                    <option value="LaPoma">La Poma</option>
+                                                                    <option value="RFront">Rosario de la Frontera</option>
+                                                                    <option value="Molinos">Molinos</option>
+                                                                    <option value="LaCaldera">La Caldera</option>
+                                                                    <option value="LosAndes">Los Andes</option>
+                                                                    <option value="SanCarlos">San Carlos</option>
+                                                                    <option value="Anta">Anta</option>
+                                                                    <option value="Guachipas">Guachipas</option>
+                                                                    <option value="Cafayate">Cafayate</option>
+                                                                    <option value="Cachi">Cachi</option>
+                                                                    <option value="RLerma">Rosario de Lerma</option>
+                                                                    <option value="GralGuemes">General Güemes</option>
+                                                                    <option value="Cerrillos">Cerrillos</option>
+                                                                    <option value="Chicoana">Chicoana</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="field">
+                                                                <label for="address">Dirección</label>
+                                                                <input type="text" name="address" id="address">    
+                                                            </div>
+                                                        </div>
+                                                        <div class="fields-content">
+                                                            <div class="field">
+                                                                <label for="email">Correo electronico</label>
+                                                                <input type="email" name="email" id="email">    
+                                                            </div>
+                                                            <div class="field">
+                                                                <label for="tel">Teléfono</label>
+                                                                <input type="number" name="tel" id="tel">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="data-career">
+                                                    <h3>Datos de la postulación</h3>
+                                                    <div class="group-fields">
+                                                        <div class="fields-content">
+                                                            <div class="field">
+                                                                <label for="state">Estado</label>
+                                                                <select name="state" id="state">
+                                                                    <option value="SinApadrinar">Sin Apadrinar</option>
+                                                                    <option value="Apadrinado">Apadrinado</option>
+                                                                    <option value="Finalizado">Finalizado</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="field">
+                                                                <label for="career">Carrera que desea estudiar</label>
+                                                                <input type="text" name="career" id="career">    
+                                                            </div>
+                                                            <div class="field">
+                                                                <label for="link">Link al video de presentación</label>
+                                                                <input type="text" name="link" id="link">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="group-fields">
+                                                        <div class="field">
+                                                            <label for="phrase">Frase corta que te identifique. Ejemplo "Pasion por el reportaje"</label>
+                                                            <input type="text" name="phrase" id="phrase">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="button-group">
+                                                    <button type="submit">Guardar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div
+                                    <div class="table-candidates">
+                                        <table>
+                                            <tr>
+                                                <th>Candidato</th>
+                                                <th class="dni">DNI</th>
+                                                <th class="career">Carrera</th>
+                                                <th class="link">Link</th>
+                                                <th>Estado</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        <% candidates.forEach(candidate => { %>
+                                            <tr>
+                                              <td><%= candidate.name %> <%= candidate.lastname %></td>
+                                              <td class="dni"><%= candidate.dni %></td>
+                                              <td class="career"><%= candidate.career %></td>
+                                              <td class="link">
+                                                <a href="<%= candidate.link %>" target="_blank">
+                                                    <%= candidate.link.length > 15 ? candidate.link.substring(0, 15) + '...' : candidate.link %>
+                                                  </a>
+                                              </td>
+                                              <td><%= candidate.state %></td>
+                                              <td>
+                                                <div class="group-button">
+                                                    <a href="/edit/<%= candidate._id %>">
+                                                        <button class="edit">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                                            </svg>
+                                                        </button>
+                                                    </a>
+                                                    <a href="">
+                                                        <button class="delete" onclick="confirmDelete('<%= candidate._id %>')">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                                            </svg>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                        <% }); %>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function confirmDelete(candidateId) {
+            const confirmation = confirm('¿Estás seguro de que deseas eliminar este candidato?');
+            if (confirmation) {
+                window.location.href = `/delete/${candidateId}`;
+            }
+        }
+    </script>
+    <script>
+        function showHideOtherProv() {
+            var selectedOption = document.getElementById("provincia").value;
+            var otherProvDiv = document.getElementById("other-prov");
+    
+            if (selectedOption === "OtraProvincia") {
+                otherProvDiv.style.display = "grid";
+            } else {
+                otherProvDiv.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        const addButton = document.querySelector('.add');
+        const modal = document.querySelector('.modal');
+        const closeButton = document.querySelector('.close-button');
+
+        addButton.addEventListener('click', () => {
+            modal.style.display = 'flex'; // Muestra la modal al hacer clic
+        });
+
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none'; // Oculta la modal al hacer clic en cerrar
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+    </script>
+</body>
+</html>

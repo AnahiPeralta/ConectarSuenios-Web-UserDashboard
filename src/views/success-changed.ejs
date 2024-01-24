@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="/styles/success.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <div class="contain-main">
+        <div class="container">
+            <div class="contain-gif">
+                <img id="contain-gif" src="/img/success.gif" alt="">
+            </div>
+            <div id="alert-popup-container" class="alert-popup-container"  style="display: none;">
+                <div class="success-checkmark">
+                  <div class="check-icon">
+                    <span class="icon-line line-tip"></span>
+                    <span class="icon-line line-long"></span>
+                    <div class="icon-circle"></div>
+                    <div class="icon-fix"></div>
+                  </div>
+                </div>
+                <div class="alert-popup-title">
+                    <h3>Guardado correctamente</h3>
+                </div>
+                <div class="alert-popup-confirm">
+                    <button><a href="/profilepadpad">Regresar</button></a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        $("button").click(function() {
+        $(".check-icon").hide();
+        setTimeout(function() {
+            $(".check-icon").show();
+        }, 10);
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#contain-gif").fadeIn(1000); 
+    
+            setTimeout(function() {
+                $("#contain-gif").fadeOut(1000, function() {
+                    $("#alert-popup-container").fadeIn(1000); 
+                });
+            }, 2000); 
+        });
+    </script>
+</body>
+</html>

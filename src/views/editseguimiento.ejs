@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Seguimiento</title>
+    <link rel="stylesheet" href="/styles/edit-profile.css">
+</head>
+<body>
+    <main class="main">
+        <div class="main-wrapper settings">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar">
+                        <div class="internal-menu">
+                            <ul class="menu">
+                                <li><div class="line"></div><a href="/perfil-pad">Mi perfil</a></li>
+                                <li><div class="line"></div><a href="/edit-perfil-pad">Editar Perfil</a></li>
+                                <li><div class="line"></div><a href="/perfil-cand">Candidato</a></li>
+                                <li><div class="line"></div><a href="/profilepadpad">Seguimiento</a></li>
+                                <li><div class="line"></div><a href="/logout">Salir</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="title">
+                                    <h3>Editar Seguimiento</h3>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <form method="POST" action="/updateseguimiento/<%= seguimiento.id %>">
+                                    <h3>Datos del candidato</h3>
+                                    <div class="contain-groups">
+                                        <div class="group-fields">
+                                            <div class="field">
+                                                <label for="candidateApad">Candidato</label>
+                                                <select name="candidateApad" id="">
+                                                    <option value="<%= seguimiento.candidateApad || '' %>"><%= seguimiento.candidateApad || '' %></option>
+                                                </select>
+                                            </div>
+                                            <div class="field">
+                                                <label for="emailApad">Correo</label>
+                                                <input type="text" name="emailApad" id="" value="<%= seguimiento.emailApad || '' %>">        
+                                            </div>
+                                            <div class="field">
+                                                <label for="institutionApad">Institución</label>
+                                                <input type="text" name="institutionApad" id="" value="<%= seguimiento.institutionApad || '' %>">
+                                            </div>
+                                        </div>
+                                        <div class="group-fields">
+                                            <div class="field">
+                                                <label for="stateApad">Estado</label>
+                                                <select name="stateApad" id="">
+                                                    <option value="apadrinado" <%= seguimiento.stateApad === 'apadrinado' ? 'selected' : '' %>>Apadrinado</option>
+                                                    <option value="finalizado" <%= seguimiento.stateApad === 'finalizado' ? 'selected' : '' %>>Finalizado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="group-fields">
+                                            <div class="field">
+                                                <label for="dateApad">Fecha de Seguimiento</label>
+                                                <input type="date" name="dateApad" id="dateApad" value="<%= seguimiento.dateApad ? seguimiento.dateApad.toISOString().split('T')[0] : '' %>">        
+                                            </div>
+                                        </div>
+                                        <div class="group-fields">
+                                            <div class="field">
+                                                <label for="stateFollow">Seguimiento</label>
+                                                <select name="stateFollow" id="stateFollow">
+                                                    <option value="sinEnviar" <%= seguimiento.stateFollow === 'sinEnviar' ? 'selected' : '' %>>Sin enviar</option>
+                                                    <option value="enviado" <%= seguimiento.stateFollow === 'enviado' ? 'selected' : '' %>>Formulario enviado</option>
+                                                    <option value="respRecibidas" <%= seguimiento.stateFollow === 'respRecibidas' ? 'selected' : '' %>>Respuestas recibidas</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contain-button">
+                                        <button class="back" style="margin-right: 10px;"><a href="/profilepadpad">Regresar</a></button>
+                                        <button type="submit">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<%- layout('layouts/main.ejs')%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/styles/login.css">
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="img-logo">
+                <img src="/img/logoCS.png" alt="">
+            </div>
+            <div class="register">
+                <p>¿Ya tienes cuenta?</p>
+                <button><a href="/signin">Iniciar sesión</a></button>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="main-contain">
+            <div class="img-contain-back">
+                <img class="img-1" src="/img/img-signin.jpg" alt="">
+            </div> 
+            <div class="form">
+                <div class="form-contain">
+                    <div class="text-contain">
+                        <h3>¡Bienvenido a Conectar Sueños!</h3>
+                        <p>Registra una cuenta para comenzar</p>    
+                    </div>
+                    <form action="/signup" method="post">
+                        <div class="group-fields">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" placeholder="Ingresa tu email">                        
+                        </div>
+                        <div class="group-fields">
+                            <label for="password" style="display: flex; align-items: center; gap: 5px;">Contraseña
+                                <svg class="show" onclick="togglePasswordVisibility('currentPassword')" xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"
+                                    style="
+                                        display: flex;
+                                        gap: 10px;
+                                        align-items: center;
+                                        cursor: pointer;
+                                        color: #0c82e2;
+                                    ">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                </svg>
+                                <svg class="ocultar" onclick="togglePasswordVisibility('currentPassword')" xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16"
+                                    style="
+                                        display: none;
+                                        gap: 10px;
+                                        align-items: center;
+                                        cursor: pointer;
+                                        color: #0c82e2;
+                                    ">
+                                    <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588M5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
+                                    <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
+                                  </svg>
+                            </label>
+                            <input type="password" name="password" id="currentPassword" placeholder="Ingresa tu contraseña">
+                        </div>
+                        <div class="group-fields">
+                            <label for="role">Rol</label> 
+                            <select name="role" id="roleSelect">
+                                <option value="" disabled selected>Elige una opción</option>
+                                <option value="padrino">Padrino</option>
+                                <option value="institucion">Institución</option>
+                            </select>
+                        </div>
+                        <button type="submit">Registrar</button>
+                    </form>
+                    <p class="forget-pass">¿Ya existe la cuenta? <a href="/signin"> Click aqui</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('roleSelect').addEventListener('change', function() {
+            this.classList.add('changed');
+        });
+    </script>
+     <script>
+        function togglePasswordVisibility(passwordFieldId) {
+            var passwordField = document.getElementById(passwordFieldId);
+            var showIcon = document.querySelector('.show');
+        var hideIcon = document.querySelector('.ocultar');
+    
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                showIcon.style.display = "none";
+                hideIcon.style.display = "flex";
+            } else {
+                passwordField.type = "password";
+                showIcon.style.display = "flex";
+                hideIcon.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

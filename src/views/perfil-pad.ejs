@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="/styles/perfil.css">
+</head>
+<body>
+    <style>
+        @media (max-width: 1000px) {
+            .main-content {
+                margin-left: 0px;
+                margin-top: 230px;
+            }
+        }
+    </style>
+    <main class="main">
+        <div class="main-wrapper settings">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar">
+                        <div class="internal-menu">
+                            <ul class="menu">
+                                <li><div class="line-active"></div><a class="active" href="/perfil-pad">Mi perfil</a></li>
+                                <li><div class="line"></div><a href="/edit-perfil-pad">Editar Perfil</a></li>
+                                <li><div class="line"></div><a href="/perfil-cand">Candidato</a></li>
+                                <li><div class="line"></div><a href="/profilepadpad">Seguimiento</a></li>
+                                <li><div class="line"></div><a href="/logout">Salir</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="title">
+                                    <h3>Perfil</h3>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <div class="content-institution-info">
+                                        <h2><%= padrinos.length > 0 ? padrinos[0].nameP : '' %> <%= padrinos.length > 0 ? padrinos[0].lastnameP : '' %></h2>
+                                    </div>
+                                </div>
+                                <div class="info-contain-agent">
+                                    <div class="personal-info">
+                                        <p>Datos personales</p>
+                                        <div class="info-agent">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+                                                    <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/>
+                                                    <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12z"/>
+                                                </svg>
+                                                DNI: <%= padrinos.length > 0 ? padrinos[0].dniP : '' %>
+                                            </span> <!--dni-->
+                                        </div>
+                                        <div class="info-agent">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                                </svg>
+                                                <%= padrinos.length > 0 ? padrinos[0].paisP : '' %>, <%= padrinos.length > 0 ? padrinos[0].provinciaP : '' %>
+                                            </span> <!--Pais-->
+                                        </div>
+                                        <div class="info-agent">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                                </svg>
+                                                Direccion: <%= padrinos.length > 0 ? padrinos[0].direccionP : '' %>
+                                            </span> <!--direccion-->
+                                        </div>
+                                    </div>
+                                    <div class="contact-info">
+                                        <p>Contacto</p>
+                                        <div class="info-agent">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                                </svg>
+                                                <%= padrinos.length > 0 ? padrinos[0].telFijo : '' %>
+                                                <!--telefono fijo-->
+                                            </span> 
+                                        </div>
+                                        <div class="info-agent">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                                </svg>
+                                                <%= padrinos.length > 0 ? padrinos[0].telMovil : '' %>
+                                                <!--telefono movil-->
+                                            </span> 
+                                        </div>
+                                        <div class="info-agent">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                                                </svg>
+                                                <%= padrinos.length > 0 ? padrinos[0].emailP : '' %>
+                                                <!--correo-->
+                                            </span> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="/styles/edit-profile.css">
+</head>
+<body>
+    <style>
+        .content button.show {
+            padding: 5px;
+            margin-bottom: 0px;
+            border: none;
+        }
+
+        .flex-show-pass {
+            display: grid;
+        }
+    </style>
+    <main class="main">
+        <div class="main-wrapper settings">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar">
+                        <div class="internal-menu">
+                            <ul class="menu">
+                                <li><div class="line"></div><a href="/perfil">Perfil</a></li>
+                                <li><div class="line-active"></div><a class="active" href="/edit-perfil">Editar Perfil</a></li>
+                                <li><div class="line"></div><a href="/profile">Candidaturas</a></li>
+                                <li><div class="line"></div><a href="/logout">Salir</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="title">
+                                    <h3>Editar Perfil</h3>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <form action="/edit-perfil" method="post">
+                                    <div class="container-forms">
+                                        <div class="container-agent">
+                                            <h3>Datos del representante</h3>
+                                            <div class="contain-groups">
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="nameR">Nombre y Apellido</label>
+                                                        <input type="text" name="nameR" id="" value="<%= agent.nameR || '' %>">
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="dniR">DNI</label>
+                                                        <input type="text" name="dniR" id="" value="<%= agent.dniR || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="telFijo">Telefono fijo</label>
+                                                        <input type="number" name="telFijo" id="" value="<%= agent.telFijo || '' %>">
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="telMovil">Telefono Movil</label>
+                                                        <input type="number" name="telMovil" id="" value="<%= agent.telMovil || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="emailR">Correo</label>
+                                                        <input type="email" name="emailR" id="" value="<%= agent.emailR || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="position">Cargo dentro de la institución</label>
+                                                        <input type="text" name="position" id="" value="<%= agent.position || '' %>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-institution">
+                                            <h3>Datos de la Institucion</h3>
+                                            <div class="contain-groups">
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="nameI">Nombre de la institución</label>
+                                                        <input type="text" name="nameI" id="" value="<%= institution.nameI || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="tipoI">Tipo</label>
+                                                        <select name="tipoI" id="">
+                                                            <option value="bachiller" <%= institution.tipoI === 'bachiller' ? 'selected' : '' %>>Secundario bachiller</option>
+                                                            <option value="tecnico" <%= institution.tipoI === 'tecnico' ? 'selected' : '' %>>Secundario Técnico</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="orientacionI">Orientación</label>
+                                                        <input type="text" name="orientacionI" id="" value="<%= institution.orientacionI || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="paisI">Pais</label>
+                                                        <select name="paisI" id="">
+                                                            <option value="argentina" <%= institution.paisI === 'argentina' ? 'selected' : '' %>>Argentina</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="provinciaI">Provincia</label>
+                                                        <select name="provinciaI" id="">
+                                                            <option value="salta" <%= institution.provinciaI === 'salta' ? 'selected' : '' %>>Salta</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="departamentoI">Departamento</label>
+                                                        <select name="departamentoI" id="departamentoI">
+                                                            <% const selectedDepartamento = institution.departamentoI || ''; %>
+                                                            <% const departamentos = [
+                                                                'San Martín', 'Rivadavia', 'Salta', 'Oran', 'La Viña', 'Metan', 'La Candelaria',
+                                                                'Iruya', 'SantaVictoria', 'La Poma', 'Rosario de la Frontera', 'Molinos', 'La Caldera',
+                                                                'Los Andes', 'San Carlos', 'Anta', 'Guachipas', 'Cafayate', 'Cachi',
+                                                                'Rosario de Lerma', 'Gral Guemes', 'Cerrillos', 'Chicoana'
+                                                            ]; %>
+                                                            <% departamentos.forEach(departamento => { %>
+                                                                <option value="<%= departamento %>" <%= selectedDepartamento === departamento ? 'selected' : '' %>><%= departamento %></option>
+                                                            <% }); %>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="direccionI">Dirección</label>
+                                                        <input type="text" name="direccionI" id="" value="<%= institution.direccionI || '' %>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contain-button">
+                                        <button type="submit">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="content" style="margin-top: 20px;">
+                                <h3>Cambiar Contraseña</h3>
+                                <form action="/change-password" method="post">
+                                    <div class="group-fields">
+                                        <div class="field">
+                                            <label for="currentPassword" style="display: flex; gap: 5px; align-items: center; margin-bottom: 5px;">Contraseña Actual
+                                                <svg onclick="togglePasswordVisibility('currentPassword')" xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"
+                                                    style="
+                                                        display: flex;
+                                                        gap: 10px;
+                                                        align-items: center;
+                                                        cursor: pointer;
+                                                        color: #0c82e2;
+                                                    ">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                                </svg></label>
+                                            <div class="flex-show-pass">
+                                                <input type="password" name="currentPassword" id="currentPassword" required>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label for="newPassword" style="display: flex; gap: 5px; align-items: center; margin-bottom: 5px;">Nueva Contraseña
+                                                <svg onclick="togglePasswordVisibility('newPassword')" xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"
+                                                style="
+                                                        display: flex;
+                                                        gap: 10px;
+                                                        align-items: center;
+                                                        cursor: pointer;
+                                                        color: #0c82e2;
+                                                    ">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                                </svg>
+                                            </label>
+                                            <div class="flex-show-pass">
+                                                <input type="password" name="newPassword" id="newPassword" required>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label for="confirmPassword" style="display: flex; gap: 5px; align-items: center; margin-bottom: 5px;">Confirmar Nueva Contraseña
+                                                <svg onclick="togglePasswordVisibility('confirmPassword')" xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"
+                                                style="
+                                                display: flex;
+                                                gap: 10px;
+                                                align-items: center;
+                                                cursor: pointer;
+                                                color: #0c82e2;
+                                            ">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                                </svg>
+                                            </label>
+                                            <div class="flex-show-pass">
+                                                <input type="password" name="confirmPassword" id="confirmPassword" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contain-button">
+                                        <button type="submit">Cambiar Contraseña</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function togglePasswordVisibility(passwordFieldId) {
+            var passwordField = document.getElementById(passwordFieldId);
+    
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

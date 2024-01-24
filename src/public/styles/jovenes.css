@@ -1,0 +1,112 @@
+@import url('general.css'); @import url('header.css');
+section.aspirantes-content {
+    margin-top: 80px;
+}
+.content-text, .grid-cardItem .info-carrer , .infoPerAsp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-text, .grid-cardItem {
+    text-align: center;
+}
+.content-text .text-encab h2, .grid-cardItem .info-Asp h4, .grid-cardItem .info-Asp h5 {
+    font-family: 'Raleway', sans-serif;
+}
+.content-text .text-encab p, .grid-cardItem .info-carrer span, .grid-cardItem .info-carrer h6, .grid-cardItem button{
+    font-family: 'Quicksand', sans-serif;
+}
+.content-text .text-encab h2, .grid-cardItem .info-Asp h4, .grid-cardItem .info-Asp h5, .grid-cardItem .info-carrer h6 {
+    font-weight: 600;
+}
+.content-text {
+    height: 30vh;
+    background: linear-gradient(90deg, #0082b9e1, #6bbcffd5), url("../img/bg-jovenes.jpg");
+}
+.content-text .text-encab h2{
+    font-size: var(--fontSubtitulo);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+.content-text .text-encab p {
+    font-size: var(--fontText);   
+    text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5); 
+}
+.grid-cardItem .info-carrer span, .grid-cardItem .info-carrer h6 {
+    color: var(--black);
+    font-size: 14px;
+}
+.grid-cardItem .info-carrer span{
+    margin-right: 10px;
+}
+.grid-cardItem .info-carrer h6, .grid-cardItem .info-carrer span, .content-text .text-encab p, .grid-cardItem .info-Asp h5{
+    margin-top: 5px;
+}
+.grid-cardItem .info-carrer span, .content-text .text-encab p {
+    font-weight: 500; 
+}
+.content-card-Asp {
+    padding: 30px 7%;
+}
+.video-Asp {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (para videos de YouTube) */
+    height: 0;
+    overflow: hidden;
+}
+.video-Asp iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border: none;
+}
+.grid-containerCard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.grid-cardItem {
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.582);
+}
+.grid-cardItem .video-Asp iframe {
+    overflow: hidden;
+}
+.grid-cardItem .info-Asp h4{
+    color: var(--dark);
+    font-size: 22px;
+    margin-right: 13px;
+}
+.grid-cardItem .info-Asp h5 {
+    color: var(--bluedark);
+    font-size: 18px;
+}
+.grid-cardItem .info-alu {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.grid-cardItem .infoPerAsp {
+    margin-top: 20px;
+}
+.grid-cardItem button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight:500;
+    background: var(--bgButton);
+}
+.content-text, .grid-cardItem button, .video-Asp iframe {
+    width: 100%;
+}
+.grid-cardItem button, .content-text {
+    background-size: cover;
+}
+.grid-cardItem a, .content-text .text-encab p , .content-text .text-encab h2 {
+    color: white;
+}

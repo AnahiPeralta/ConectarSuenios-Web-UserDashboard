@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="/styles/edit-profile.css">
+</head>
+<body>
+    <style>
+        .button-group {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 10px;
+        }
+
+        .button-group button a {
+            color: white;
+        }
+    </style>
+    <main class="main">
+        <div class="main-wrapper settings">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar">
+                        <div class="internal-menu">
+                            <ul class="menu">
+                                <li><div class="line"></div><a href="/perfil">Perfil</a></li>
+                                <li><div class="line"></div><a href="/edit-perfil">Editar Perfil</a></li>
+                                <li><div class="line"></div><a href="/profile">Candidaturas</a></li>
+                                <li><div class="line"></div><a href="/logout">Salir</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="title">
+                                    <h3>Editar Candidato</h3>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <form id="editForm" method="post">
+                                    <div class="container-forms">
+                                        <div class="data-alumno">
+                                            <h3>Datos Personales del Alumno</h3>
+                                            <div class="contain-groups">
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="name">Nombre/s</label>
+                                                        <input type="text" name="name" id="name" value="<%= candidate.name %>">                    
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="lastname">Apellido/s</label>
+                                                        <input type="text" name="lastname" id="lastname" value="<%= candidate.lastname %>">                    
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="dni">DNI</label>
+                                                        <input type="text" name="dni" id="dni" value="<%= candidate.dni %>">                    
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="birthdate">Fecha de nacimiento</label>
+                                                        <input type="date" name="birthdate" id="birthdate" value="<%= candidate.birthdate ? candidate.birthdate.toISOString().split('T')[0] : '' %>">            
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="age">Edad</label>
+                                                        <input type="number" name="age" id="age" value="<%= candidate.age %>">        
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="email">Correo electronico</label>
+                                                        <input type="email" name="email" id="email" value="<%= candidate.email %>">                     
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="tel">Teléfono</label>
+                                                        <input type="number" name="tel" id="tel" value="<%= candidate.tel %>">                    
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="pais">Nacionalidad</label>
+                                                        <input type="text" name="pais" id="pais" value="<%= candidate.pais %>">                    
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="provincia">Provincia de origen</label>
+                                                        <select name="provincia" id="provincia" value="<%= candidate.provincia %>">                    
+                                                            <option value="Salta" <%= candidate.provincia === 'Salta' ? 'selected' : '' %>>Salta</option>
+                                                            <option value="OtraProvincia" <%= candidate.provincia === 'OtraProvincia' ? 'selected' : '' %>>Otra provincia</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="provincia_alt">Si es otra provincia, ¿Cuál?</label>
+                                                        <input type="text" name="provincia_alt" id="provincia_alt" value="<%= candidate.provincia_alt %>">                    
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="departamento">Residencia</label>
+                                                        <select name="departamento" id="departamento">
+                                                            <option value="SanMartín" <%= candidate.departamento === 'SanMartín' ? 'selected' : '' %>>San Martín</option>
+                                                            <option value="Rivadavia" <%= candidate.departamento === 'Rivadavia' ? 'selected' : '' %>>Rivadavia</option>
+                                                            <option value="Salta" <%= candidate.departamento === 'Salta' ? 'selected' : '' %>>Salta</option>
+                                                            <option value="Oran" <%= candidate.departamento === 'Oran' ? 'selected' : '' %>>Oran</option>
+                                                            <option value="LaViña" <%= candidate.departamento === 'LaViña' ? 'selected' : '' %>>La Viña</option>
+                                                            <option value="Metan" <%= candidate.departamento === 'Metan' ? 'selected' : '' %>>Metan</option>
+                                                            <option value="LaCandelaria" <%= candidate.departamento === 'LaCandelaria' ? 'selected' : '' %>>La Candelaria</option>
+                                                            <option value="Iruya" <%= candidate.departamento === 'Iruya' ? 'selected' : '' %>>Iruya</option>
+                                                            <option value="SantaVictoria" <%= candidate.departamento === 'SantaVictoria' ? 'selected' : '' %>>Santa Victoria</option>
+                                                            <option value="LaPoma" <%= candidate.departamento === 'LaPoma' ? 'selected' : '' %>>La Poma</option>
+                                                            <option value="RFront" <%= candidate.departamento === 'RFront' ? 'selected' : '' %>>Rosario de la Frontera</option>
+                                                            <option value="Molinos" <%= candidate.departamento === 'Molinos' ? 'selected' : '' %>>Molinos</option>
+                                                            <option value="LaCaldera" <%= candidate.departamento === 'LaCaldera' ? 'selected' : '' %>>La Caldera</option>
+                                                            <option value="LosAndes" <%= candidate.departamento === 'LosAndes' ? 'selected' : '' %>>Los Andes</option>
+                                                            <option value="SanCarlos" <%= candidate.departamento === 'SanCarlos' ? 'selected' : '' %>>San Carlos</option>
+                                                            <option value="Anta" <%= candidate.departamento === 'Anta' ? 'selected' : '' %>>Anta</option>
+                                                            <option value="Guachipas" <%= candidate.departamento === 'Guachipas' ? 'selected' : '' %>>Guachipas</option>
+                                                            <option value="Cafayate" <%= candidate.departamento === 'Cafayate' ? 'selected' : '' %>>Cafayate</option>
+                                                            <option value="Cachi" <%= candidate.departamento === 'Cachi' ? 'selected' : '' %>>Cachi</option>
+                                                            <option value="RLerma" <%= candidate.departamento === 'RLerma' ? 'selected' : '' %>>Rosario de Lerma</option>
+                                                            <option value="GralGuemes" <%= candidate.departamento === 'GralGuemes' ? 'selected' : '' %>>General Güemes</option>
+                                                            <option value="Cerrillos" <%= candidate.departamento === 'Cerrillos' ? 'selected' : '' %>>Cerrillos</option>
+                                                            <option value="Chicoana" <%= candidate.departamento === 'Chicoana' ? 'selected' : '' %>>Chicoana</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="address">Dirección</label>
+                                                        <input type="text" name="address" id="address" value="<%= candidate.address %>">                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="data-career">
+                                            <h3>Datos de la postulación</h3>
+                                            <div class="contain-groups">
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="career">Carrera que desea estudiar</label>
+                                                        <input type="text" name="career" id="career" value="<%= candidate.career %>">        
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="link">Link del video de presentación</label>
+                                                        <input type="text" name="link" id="link" value="<%= candidate.link %>">                    
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="phrase">Frase que te identifique. Ejemplo: "Apasionada por la tecnologia"</label>
+                                                        <input type="text" name="phrase" id="phrase" value="<%= candidate.phrase %>">            
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="state">Estado</label>
+                                                        <select name="state" id="state" value="<%= candidate.state %>">
+                                                            <option value="SinApadrinar" <%= candidate.state === 'SinApadrinar' ? 'selected' : '' %>>Sin apadrinar</option>
+                                                            <option value="Apadrinado" <%= candidate.state === 'Apadrinado' ? 'selected' : '' %>>Apadrinado</option>
+                                                            <option value="Finalizado" <%= candidate.state === 'Finalizado' ? 'selected' : '' %>>Finalizado</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="button-groups">
+                                        <div class="button-group">
+                                            <button class="back"><a href="/profile">Regresar</a></button>
+                                            <button type="button" onclick="saveChanges()">Guardar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function saveChanges() {
+         const formData = $('#editForm').serialize();
+     
+         $.ajax({
+             type: 'POST',
+             url: window.location.pathname,
+             data: formData,
+             success: function (data) {
+                 if (data.success) {
+                     console.log('Cambios guardados');
+                     alert(data.message); 
+                     location.reload(); 
+                 } else {
+                     console.error('Cambios guardados', data.message);
+                     alert('Cambios guardados'); 
+                 }
+             },
+             error: function (error) {
+                 console.error('Cambios guardados', error);
+                 alert('Cambios guardados'); 
+                 location.reload(); 
+             }
+         });
+     }
+    </script>
+     
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="/styles/perfil.css">
+</head>
+<body>
+    <style>
+        .flex-info-perfil {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .content-institution-info h2 {
+            margin-bottom: 10px;
+        }
+
+        span {
+            text-transform: capitalize;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 1000px) {
+            .main-content {
+                margin-left: 0px;
+                margin-top: 230px;
+            }
+        }
+    </style>
+    <main class="main">
+        <div class="main-wrapper settings">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar">
+                        <div class="internal-menu">
+                            <ul class="menu">
+                                <li><div class="line"></div><a href="/perfil-pad">Mi perfil</a></li>
+                                <li><div class="line"></div><a href="/edit-perfil-pad">Editar Perfil</a></li>
+                                <li><div class="line-active"></div><a class="active" href="/perfil-cand">Candidato</a></li>
+                                <li><div class="line"></div><a href="/profilepadpad">Seguimiento</a></li>
+                                <li><div class="line"></div><a href="/logout">Salir</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="title">
+                                    <h3>Candidato Apadrinado</h3>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <div class="content-institution-info">
+                                        <h2>Candidato: <%= apadrinados.length > 0 ? apadrinados[0].nameCand : '' %><%= apadrinados.length > 0 ? apadrinados[0].lastnameCand : '' %></h2>
+                                    </div>
+                                    <div class="flex-info-perfil">
+                                        <div class="info-contain-agent">
+                                            <div class="personal-info">
+                                                <p>Datos personales</p>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+                                                            <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/>
+                                                            <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12z"/>
+                                                        </svg>
+                                                        DNI: <%= apadrinados.length > 0 ? apadrinados[0].dniCand : '' %>
+                                                    </span> <!--dni-->
+                                                </div>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                                        </svg>
+                                                        Pais: <%= apadrinados.length > 0 ? apadrinados[0].paisCand : '' %>
+                                                    </span> <!--Pais-->
+                                                </div>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                                        </svg>
+                                                        Provincia: <%= apadrinados.length > 0 ? apadrinados[0].provinciaCand : '' %>
+                                                    </span> <!--provincia-->
+                                                </div>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                                        </svg>
+                                                        Direccion: <%= apadrinados.length > 0 ? apadrinados[0].addressCand : '' %>
+                                                    </span> <!--dni-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="info-contain-agent">
+                                            <div class="personal-info">
+                                                <p>Contacto</p>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                                        </svg>
+                                                        <%= apadrinados.length > 0 ? apadrinados[0].telCand : '' %>
+                                                        <!--telefono fijo-->
+                                                    </span> 
+                                                </div>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                                                        </svg>
+                                                        <%= apadrinados.length > 0 ? apadrinados[0].emailCand : '' %>
+                                                        <!--correo-->
+                                                    </span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <div class="content-institution-info">
+                                        <h2>Institución: <%= apadrinados.length > 0 ? apadrinados[0].nameI : '' %></h2>
+                                    </div>
+                                    <div class="flex-info-perfil">
+                                        <div class="info-contain-agent">
+                                            <div class="personal-info">
+                                                <p>Datos de institución</p>
+                                                <div class="info-agent">
+                                                    <div class="card-info">
+                                                        <div class="info-i">
+                                                            <span style="margin-bottom: 0px;">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
+                                                                    <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+                                                                        path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/>
+                                                                </svg>
+                                                                Secundario <%= apadrinados.length > 0 ? apadrinados[0].tipoI : '' %>
+                                                            </span> <!--nombre y apellido-->
+                                                        </div>
+                                                        <div class="info-i">
+                                                            <span style="margin-bottom: 0px;">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                                                </svg>
+                                                                Orientación:
+                                                                <%= apadrinados.length > 0 ? apadrinados[0].orientacionI : '' %>
+                                                            </span> <!--nombre y apellido-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                                        </svg>
+                                                        <%= apadrinados.length > 0 ? apadrinados[0].paisI : '' %>, <%= apadrinados.length > 0 ? apadrinados[0].provinciaI : '' %> - <%= apadrinados.length > 0 ? apadrinados[0].departamentoI : '' %>
+                                                    </span> <!--nombre y apellido-->
+                                                </div>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                                        </svg>
+                                                        <%= apadrinados.length > 0 ? apadrinados[0].direccionI : '' %>
+                                                    </span> <!--nombre y apellido-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="info-contain-agent">
+                                            <div class="personal-info">
+                                                <p>Representante</p>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                                        </svg>
+                                                        Nombre y Apellido:
+                                                        <%= apadrinados.length > 0 ? apadrinados[0].nameR : '' %>
+                                                    </span> <!--nombre y apellido-->
+                                                </div>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                                        </svg>
+                                                        Cargo:
+                                                        <%= apadrinados.length > 0 ? apadrinados[0].position : '' %>
+                                                    </span> <!--nombre y apellido-->
+                                                </div>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                                        </svg>
+                                                        <%= apadrinados.length > 0 ? apadrinados[0].telFijo : '' %>
+                                                        <!--telefono fijo-->
+                                                    </span> 
+                                                </div>
+                                                <div class="info-agent">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                                                        </svg>
+                                                        <%= apadrinados.length > 0 ? apadrinados[0].emailR : '' %>
+                                                        <!--correo-->
+                                                    </span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

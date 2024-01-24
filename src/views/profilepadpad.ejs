@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padrino</title>
+    <link rel="stylesheet" href="/styles/profile-pad.css">
+</head>
+<body>
+    <main class="main">
+        <div class="main-wrapper settings">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar">
+                        <div class="internal-menu">
+                            <ul class="menu">
+                                <li><div class="line"></div><a href="/perfil-pad">Mi perfil</a></li>
+                                <li><div class="line"></div><a href="/edit-perfil-pad">Editar Perfil</a></li>
+                                <li><div class="line"></div><a href="/perfil-cand">Candidato</a></li>
+                                <li><div class="line-active"></div><a class="active" href="/profilepadpad">Seguimiento</a></li>
+                                <li><div class="line"></div><a href="/logout">Salir</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="title">
+                                    <h3>Seguimiento</h3>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <button class="add">+ Añadir Seguimiento</button>
+                                <button class="add-token" style="margin-left: 5px;">+ Token de Candidato</button>
+                                <div class="modal-token">
+                                    <div class="modal-content-token">
+                                        <form action="/add-token" method="post">
+                                            <span class="close-button-token">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708"/>
+                                                </svg>
+                                            </span>
+                                            <div class="group-fields">
+                                                <div class="field token">
+                                                    <label for="token">Token</label>
+                                                    <input type="text" name="token" id="token">    
+                                                </div>
+                                            </div>
+                                            <div class="button-group">
+                                                <button type="submit">Añadir</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal">
+                                    <div class="modal-content">                                       
+                                        <form action="/profilepadpad" method="post">
+                                            <span class="close-button">
+                                                <svg  style="margin-bottom: 10px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708"/>
+                                                </svg>
+                                            </span>
+                                            <div class="group-fields-cand">
+                                                <div class="field">
+                                                    <label for="candidateApad">Candidato</label>
+                                                    <select name="candidateApad" id="">
+                                                        <option value="<%= apadrinado.nameCand || '' %><%= apadrinado.lastnameCand || '' %>"><%= apadrinado.nameCand || '' %><%= apadrinado.lastnameCand || '' %></option>
+                                                    </select>
+                                                </div>
+                                                <div class="field">
+                                                    <label for="emailApad">Correo</label>
+                                                    <select name="emailApad" id="">
+                                                        <option value="<%= apadrinado.emailCand || '' %>"><%= apadrinado.emailCand || '' %></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="group-fields">
+                                                <div class="field">
+                                                    <label for="institutionApad">Institución</label>
+                                                    <select name="institutionApad" id="">
+                                                        <option value="<%= apadrinado.nameI || '' %>"><%= apadrinado.nameI || '' %></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="group-fields">
+                                                <div class="field">
+                                                    <label for="stateApad">Estado</label>
+                                                    <select name="stateApad" id="">
+                                                        <option value="apadrinado" <%= seguimientos.stateApad === 'apadrinado' ? 'selected' : '' %>>Apadrinado</option>
+                                                        <option value="finalizado" <%= seguimientos.stateApad === 'finalizado' ? 'selected' : '' %>>Finalizado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="group-fields">
+                                                <div class="field">
+                                                    <label for="dateApad">Fecha de Seguimiento</label>
+                                                    <input type="date" name="dateApad" id="dateApad" value="<%= seguimientos.dateApad || '' %>" style="width: 400px;">
+                                                </div>
+                                            </div>
+                                            <div class="group-fields">
+                                                <div class="field">
+                                                    <label for="stateFollow">Seguimiento</label>
+                                                    <select name="stateFollow" id="stateFollow">
+                                                        <option value="sinEnviar" <%= seguimientos.stateFollow === 'sinEnviar' ? 'selected' : '' %>>Sin enviar</option>
+                                                        <option value="enviado" <%= seguimientos.stateFollow === 'enviado' ? 'selected' : '' %>>Formulario enviado</option>
+                                                        <option value="respRecibidas" <%= seguimientos.stateFollow === 'respRecibidas' ? 'selected' : '' %>>Respuestas recibidas</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="button-group" style="margin-top: 0px;">
+                                                <button type="submit" style="margin-top: 7px;">Guardar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="table-candidates">
+                                    <table>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Correo</th>
+                                            <th>Institución</th>
+                                            <th>Estado</th>
+                                            <th>Fecha de seguimiento</th>
+                                            <th>Seguimiento</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                        <% seguimientos.forEach((seguimiento) => { %>
+                                        <tr data-id="<%= seguimiento.id %>">
+                                            <td><%= seguimiento.candidateApad %></td>
+                                            <td><%= seguimiento.emailApad %></td>
+                                            <td><%= seguimiento.institutionApad %></td>
+                                            <td><%= seguimiento.stateApad %></td>
+                                            <td><%= seguimiento.dateApad ? seguimiento.dateApad.toISOString().split('T')[0] : '' %></td>
+                                            <td><%= seguimiento.stateFollow %></td>
+                                            <td>
+                                                <div class="group-button">
+                                                            <button class="edit" data-id="<%= seguimiento.id %>" onclick="window.location.href='/editseguimiento/<%= seguimiento.id %>'">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                                                </svg>
+                                                            </button>
+                                                        <a href="">
+                                                            <button class="deleteSeguimiento" data-id="<%= seguimiento.id %>" onclick="confirmDelete('<%= seguimiento.id %>')">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                                                </svg>
+                                                            </button>
+                                                        </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const addButton = document.querySelector('.add');
+        const modal = document.querySelector('.modal');
+        const closeButton = document.querySelector('.close-button');
+
+        addButton.addEventListener('click', () => {
+            modal.style.display = 'flex'; // Muestra la modal al hacer clic
+        });
+
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none'; // Oculta la modal al hacer clic en cerrar
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+    </script>
+
+    <script>
+        const addTokenButton = document.querySelector('.add-token');
+        const modalToken = document.querySelector('.modal-token');
+        const closeTokenButton = document.querySelector('.close-button-token');
+
+        addTokenButton.addEventListener('click', () => {
+            modalToken.style.display = 'flex'; // Muestra la modal al hacer clic
+        });
+
+        closeTokenButton.addEventListener('click', () => {
+            modalToken.style.display = 'none'; // Oculta la modal al hacer clic en cerrar
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modalToken.style.display = 'none';
+            }
+        });
+
+    </script>
+    
+    <script>
+        function confirmDelete(seguimientoId) {
+            var confirmation = confirm("¿Estás seguro de que quieres eliminar este seguimiento?");
+            
+            if (confirmation) {
+                // Redirige a la URL de eliminación si se confirma
+                window.location.href = '/deleteseguimiento/' + seguimientoId;
+            }
+        }
+    </script>
+</body>
+</html>

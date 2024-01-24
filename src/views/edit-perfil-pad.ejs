@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="/styles/edit-profile.css">
+</head>
+<body>
+    <style>
+        @media (max-width: 1000px) {
+            .main-content {
+                margin-left: 0px;
+                margin-top: 230px;
+            }
+            .internal-menu {
+                position: fixed;
+                padding-top: 10px;
+                height: 210px;
+                width: 100%;
+                background-color:rgb(236, 236, 236);
+            }
+        }
+    </style>
+    <main class="main">
+        <div class="main-wrapper settings">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar">
+                        <div class="internal-menu">
+                            <ul class="menu">
+                                <li><div class="line"></div><a href="/perfil-pad">Mi perfil</a></li>
+                                <li><div class="line-active"></div><a class="active" href="/edit-perfil-pad">Editar Perfil</a></li>
+                                <li><div class="line"></div><a href="/perfil-cand">Candidato</a></li>
+                                <li><div class="line"></div><a href="/profilepadpad">Seguimiento</a></li>
+                                <li><div class="line"></div><a href="/logout">Salir</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="title">
+                                    <h3>Editar Perfil</h3>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <form action="/edit-perfil-pad" method="post">
+                                        <div class="container-agent">
+                                            <h3>Datos personales</h3>
+                                            <div class="contain-groups">
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="nameP">Nombre:</label>
+                                                        <input type="text" name="nameP" id="" value="<%= padrino.nameP || '' %>">
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="lastnameP">Apellido:</label>
+                                                        <input type="text" name="lastnameP" id="" value="<%= padrino.lastnameP || '' %>">
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="dniP">DNI</label>
+                                                        <input type="text" name="dniP" id="" value="<%= padrino.dniP || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="telFijo">Telefono fijo</label>
+                                                        <input type="number" name="telFijo" id="" value="<%= padrino.telFijo || '' %>">
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="telMovil">Telefono Movil</label>
+                                                        <input type="number" name="telMovil" id="" value="<%= padrino.telMovil || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="emailP">Correo</label>
+                                                        <input type="email" name="emailP" id="" value="<%= padrino.emailP || '' %>">
+                                                    </div>
+                                                </div>
+                                                <div class="group-fields">
+                                                    <div class="field">
+                                                        <label for="paisP">Pais</label>
+                                                        <select name="paisP" id="paisP" onclick="updateProvinces()">
+                                                            <% const selectedCountry = padrino.paisP || ''; %>
+                                                            <% const paises = [
+                                                                'Argentina', 'Bolivia', 'Brasil', 'Chile', 'Colombia', 'Ecuador', 'Paraguay',
+                                                                'Perú', 'Uruguay'
+                                                            ]; %>
+                                                            <% paises.forEach(paisP => { %>
+                                                                <option value="<%= paisP %>" <%= selectedCountry === paisP ? 'selected' : '' %>><%= paisP %></option>
+                                                            <% }); %>
+                                                        </select>
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="provinciaP">Provincia</label>
+                                                        <select name="provinciaP" id="provinciaP">
+                                                            <% const selectedProvince = padrino.provinciaP || ''; %>
+                                                            <% const provincias = {
+                                                                'Argentina': ['Buenos Aires', 'Buenos Aires Capital Federal', 'Catamarca', 'Chaco', 'Chubut', 'Córdoba', 'Corrientes', 'Entre Ríos', 'Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquen', 'Río Negro', 'Salta', 'San Juan', 'San Luís', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego', 'Tucumán'],
+                                                                'Uruguay': ['Artigas', 'Canelones', 'Cerro Largo', 'Colonia', 'Durazno', 'Flores', 'Florida', 'Lavalleja', 'Maldonado', 'Montevideo', 'Paysandu', 'Río Negro', 'Rivera', 'Rocha', 'Salto', 'San José', 'Soriano', 'Tacuarembo', 'Treinta y Tres'],
+                                                                'Bolivia': ['Santa Cruz', 'Beni', 'Pando', 'La Paz', 'Cochabamba', 'Oruro', 'Potosí', 'Tarija', 'Sucre'],
+                                                                'Brasil': ['Distrito Federal', 'Sao Paulo', 'Santa Catarina', 'Mato Grosso', 'Rio de Janeiro', 'Paraná', 'Bahía'],
+                                                                'Chile': ['San Marcos de Arica', 'Iquique', 'Chillan', 'Los Ángeles', 'Santiago de Chile', 'Ancud', 'Punta Arenas'],
+                                                            }; %>
+                                                            <% const selectedCountryProvinces = provincias[selectedCountry] || []; %>
+                                                            <% selectedCountryProvinces.forEach(provinciaP => { %>
+                                                                <option value="<%= provinciaP %>" <%= selectedProvince === provinciaP ? 'selected' : '' %>><%= provinciaP %></option>
+                                                            <% }); %>
+                                                        </select>
+                                                    </div>
+                                                    <div class="field">
+                                                        <label for="direccionP">Dirección</label>
+                                                        <input type="text" name="direccionP" id="" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="contain-button">
+                                        <button type="submit">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="content" style="margin-top: 20px;">
+                                <h3>Cambiar Contraseña</h3>
+                                <form action="/change-password" method="post">
+                                    <div class="group-fields">
+                                        <div class="field">
+                                            <label for="currentPassword" style="display: flex; gap: 5px; align-items: center; margin-bottom: 5px;">Contraseña Actual
+                                                <svg onclick="togglePasswordVisibility('currentPassword')" xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"
+                                                    style="
+                                                        display: flex;
+                                                        gap: 10px;
+                                                        align-items: center;
+                                                        cursor: pointer;
+                                                        color: #0c82e2;
+                                                    ">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                                </svg></label>
+                                            <div class="flex-show-pass">
+                                                <input type="password" name="currentPassword" id="currentPassword" required>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label for="newPassword" style="display: flex; gap: 5px; align-items: center; margin-bottom: 5px;">Nueva Contraseña
+                                                <svg onclick="togglePasswordVisibility('newPassword')" xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"
+                                                style="
+                                                        display: flex;
+                                                        gap: 10px;
+                                                        align-items: center;
+                                                        cursor: pointer;
+                                                        color: #0c82e2;
+                                                    ">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                                </svg>
+                                            </label>
+                                            <div class="flex-show-pass">
+                                                <input type="password" name="newPassword" id="newPassword" required>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label for="confirmPassword" style="display: flex; gap: 5px; align-items: center; margin-bottom: 5px;">Confirmar Nueva Contraseña
+                                                <svg onclick="togglePasswordVisibility('confirmPassword')" xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"
+                                                style="
+                                                display: flex;
+                                                gap: 10px;
+                                                align-items: center;
+                                                cursor: pointer;
+                                                color: #0c82e2;
+                                            ">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                                </svg>
+                                            </label>
+                                            <div class="flex-show-pass">
+                                                <input type="password" name="confirmPassword" id="confirmPassword" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contain-button">
+                                        <button type="submit">Cambiar Contraseña</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function updateProvinces() {
+            var selectedCountry = document.getElementById('paisP').value;
+            var provincias = {
+                'Argentina': ['Buenos Aires', 'Buenos Aires Capital Federal', 'Catamarca', 'Chaco', 'Chubut', 'Córdoba', 'Corrientes', 'Entre Ríos', 'Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquen', 'Río Negro', 'Salta', 'San Juan', 'San Luís', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego', 'Tucumán'],
+                'Uruguay': ['Artigas', 'Canelones', 'Cerro Largo', 'Colonia', 'Durazno', 'Flores', 'Florida', 'Lavalleja', 'Maldonado', 'Montevideo', 'Paysandu', 'Río Negro', 'Rivera', 'Rocha', 'Salto', 'San José', 'Soriano', 'Tacuarembo', 'Treinta y Tres'],
+                'Bolivia': ['Santa Cruz', 'Beni', 'Pando', 'La Paz', 'Cochabamba', 'Oruro', 'Potosí', 'Tarija', 'Sucre'],
+                'Brasil': ['Distrito Federal', 'Sao Paulo', 'Santa Catarina', 'Mato Grosso', 'Rio de Janeiro', 'Paraná', 'Bahía'],
+                'Chile': ['San Marcos de Arica', 'Iquique', 'Chillan', 'Los Ángeles', 'Santiago de Chile', 'Ancud', 'Punta Arenas'],
+            };
+            var selectedCountryProvinces = provincias[selectedCountry] || [];
+            var provinciaSelect = document.getElementById('provinciaP');
+    
+            // Clear current options
+            provinciaSelect.innerHTML = '';
+    
+            // Add new options
+            selectedCountryProvinces.forEach(function (provinciaP) {
+                var option = document.createElement('option');
+                option.value = provinciaP;
+                option.text = provinciaP;
+                provinciaSelect.appendChild(option);
+            });
+        }
+    </script>
+
+    <script>
+        function togglePasswordVisibility(passwordFieldId) {
+            var passwordField = document.getElementById(passwordFieldId);
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

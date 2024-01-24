@@ -1,0 +1,155 @@
+@import url('general.css');
+body {
+    background-color:rgb(236, 236, 236);
+}
+.main {
+    padding: 20px;
+    background-color:rgb(236, 236, 236);
+    height: 100%; /*Antes era 100vh*/
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.row {
+    display: grid;
+}
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.main-content {
+    margin-left: 200px;
+}
+.internal-menu {
+    position: fixed;
+    height: 100%;
+    background-color:rgb(236, 236, 236);
+}
+.internal-menu ul li {
+    padding: 8px 0;
+    display: flex;
+}
+.internal-menu ul li a {
+    margin-left: 12px;
+    color: rgb(83, 83, 83);
+    font-size: 17px;
+}
+.internal-menu ul li a.active{
+    color: black;
+    font-weight: 500;
+}
+.internal-menu ul li .line {
+    height: 25px;
+    width: 4px;
+    background-color:rgb(236, 236, 236);
+    display: flex;
+    align-items: center;
+}
+.internal-menu ul li .line-active {
+    height: 25px;
+    width: 4px;
+    background-color: rgb(0, 140, 255);
+    display: flex;
+    align-items: center;
+}
+.title h3 {
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+    padding: 0 0 15px 0;
+}
+.content-institution-info h2{
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--blue);
+}
+.info-contain-agent h3 {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.info-contain-agent p {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 7px;
+    margin-top: 7px;
+}
+.info-contain-agent .info-agent {
+    margin-bottom: 5px;
+}
+.contact-info {
+    margin-top: 15px;
+}
+.info-i span{
+    font-size: 16px;
+    text-transform:capitalize;
+}
+.card-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.card-info .info-i {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: var(--grey);
+}
+.card-info .info-i span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.info-i {
+    margin-bottom: 10px;
+}
+
+.info-agent span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.button-content button {
+    padding: 12px 25px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 500;
+    background: rgb(0, 140, 255);
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    background-size: cover;
+    margin-top: 7px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    text-align: right;
+}
+.button-content button a {
+    color: white;
+}
+@media (max-width: 1000px) {
+    .main-content {
+        margin-left: 0px;
+        margin-top: 180px;
+    }
+    .main {
+        height: 100%;
+        padding: 0px 20px 20px 20px;
+    }
+    .internal-menu {
+        position: fixed;
+        padding-top: 10px;
+        height: 160px;
+        width: 100%;
+        background-color:rgb(236, 236, 236);
+    }
+}
+
+@media (max-width:500px) {
+    .card-info {
+        display: grid;
+        gap: 2px;
+        margin-bottom: 10px;
+    }
+}
