@@ -1,5 +1,5 @@
 module.exports = {
     mongodb: {
-        URI: 'mongodb://127.0.0.1:27017/conectar-suenios'
+        URI: 'mongodb+srv://anahiperaltadev:dNuRAW2nCn0LFwHc@dashboard.r8ayhdw.mongodb.net/?retryWrites=true&w=majority'
     }
 };
